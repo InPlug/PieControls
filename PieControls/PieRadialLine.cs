@@ -47,10 +47,13 @@ namespace NetEti.CustomControls
             }
             set
             {
-                color = value;
-                solidBrush = new SolidColorBrush(color);
-                solidBrush.Freeze();
-                onPropertyChanged(this, "Color");
+                if (value != color)
+                {
+                    color = value;
+                    solidBrush = new SolidColorBrush(color);
+                    solidBrush.Freeze();
+                    onPropertyChanged(this, "Color");
+                }
             }
         }
 

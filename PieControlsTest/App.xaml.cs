@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+﻿using NetEti.ApplicationControl;
+using System;
 using System.Windows;
 
 namespace NetEti.DemoApplications
@@ -12,5 +9,26 @@ namespace NetEti.DemoApplications
     /// </summary>
     public partial class App : Application
     {
+        private static Logger _logger;
+
+        /// <summary>
+        /// Wird beim Start der Anwendung durchlaufen.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnStartup(System.Windows.StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
+            App._logger = new Logger(false, "#PieControl#");
+            InfoController.GetInfoSource().RegisterInfoReceiver(App._logger, InfoTypes.Collection2InfoTypeArray(InfoTypes.All));
+        }
+        // Wird in jedem Fall beim Beenden von Vishnu durchlaufen.
+        // Versucht noch, Aufräumarbeiten auszuführen, endet aber u.U. aprupt
+        // ohne fertig zu werden.
+        private static void OnProcessExit(object sender, EventArgs e)
+        {
+            App._logger?.Dispose();
+        }
+
     }
 }

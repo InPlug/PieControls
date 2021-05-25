@@ -54,6 +54,9 @@
     <Reference Include="Microsoft.Expression.Drawing">
       <HintPath>$(AssemblyRoot)\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="NetEti.InfoController">
+      <HintPath>..\..\..\ReadyBin\Assemblies\NetEti.InfoController.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

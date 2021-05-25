@@ -48,12 +48,15 @@ namespace NetEti.CustomControls
             }
             set
             {
-                color = value;                
-                gradientBrush = new LinearGradientBrush(MakeSecondColor(color, 50), color, 45);
-                solidBrush = new SolidColorBrush(color);
-                gradientBrush.Freeze();
-                solidBrush.Freeze();
-                onPropertyChanged(this, "Color");
+                if (value != color)
+                {
+                    color = value;
+                    gradientBrush = new LinearGradientBrush(MakeSecondColor(color, 50), color, 45);
+                    solidBrush = new SolidColorBrush(color);
+                    gradientBrush.Freeze();
+                    solidBrush.Freeze();
+                    onPropertyChanged(this, "Color");
+                }
             }
         }
 

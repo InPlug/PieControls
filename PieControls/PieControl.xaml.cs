@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetEti.ApplicationControl;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -245,6 +246,7 @@ namespace NetEti.CustomControls
                         line.Stroke = Data.RadialLine.SolidBrush;
                         line.Visibility = System.Windows.Visibility.Visible;
                         drawingCanvas.Children.Add(line);
+                        InfoController.Say(String.Format($"#PieControl# Children: {drawingCanvas.Children.Count}"));
                     }
                 }
             }
