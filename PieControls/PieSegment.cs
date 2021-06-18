@@ -1,5 +1,6 @@
 ﻿using System.Windows.Media;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace NetEti.CustomControls
 {
@@ -17,9 +18,10 @@ namespace NetEti.CustomControls
 
         private string name;
         private double value;
-        private Brush gradientBrush;
-        private Brush solidBrush;
+        private Brush _gradientBrush;
+        private Brush _solidBrush;
         private Color color;
+        private Dictionary<Color, Brush[]> _colorsBrushes;
 
         /// <summary>
         /// Holt oder setzt den (Prozent-)Wert für dieses Segment.
@@ -51,13 +53,32 @@ namespace NetEti.CustomControls
                 if (value != color)
                 {
                     color = value;
-                    gradientBrush = new LinearGradientBrush(MakeSecondColor(color, 50), color, 45);
-                    solidBrush = new SolidColorBrush(color);
-                    gradientBrush.Freeze();
-                    solidBrush.Freeze();
+                    if (!this._colorsBrushes.ContainsKey(color))
+                    {
+                        this._gradientBrush = new LinearGradientBrush(MakeSecondColor(color, 50), color, 45);
+                        this._solidBrush = new SolidColorBrush(color);
+                        this._gradientBrush.Freeze();
+                        this._solidBrush.Freeze();
+                        // Das nachfolgende Cashing ist notwendig. Ansonsten folgen nach längerem Betrieb
+                        // Speicherfehler: "Zur Verarbeitung dieses Befehls sind nicht genügend Speicherressourcen verfügbar..."
+                        this._colorsBrushes.Add(color, new Brush[] { this._solidBrush, this._gradientBrush} );
+                    }
+                    else
+                    {
+                        this._solidBrush = this._colorsBrushes[color][0];
+                        this._gradientBrush = this._colorsBrushes[color][1];
+                    }
                     onPropertyChanged(this, "Color");
                 }
             }
+        }
+
+        /// <summary>
+        /// Konstructor - initialisiert den Cache für die Color-Brushes.
+        /// </summary>
+        public PieSegment()
+        {
+            this._colorsBrushes = new Dictionary<Color, Brush[]>();
         }
 
         //difference should be a maximum value of 100
@@ -88,7 +109,7 @@ namespace NetEti.CustomControls
         /// </summary>
         public Brush GradientBrush
         {
-            get { return gradientBrush; }
+            get { return this._gradientBrush; }
         }
 
         /// <summary>
@@ -96,7 +117,7 @@ namespace NetEti.CustomControls
         /// </summary>
         public Brush SolidBrush
         {
-            get { return solidBrush; }
+            get { return this._solidBrush; }
         }
 
         /// <summary>
