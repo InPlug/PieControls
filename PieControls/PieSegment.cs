@@ -59,7 +59,7 @@ namespace NetEti.CustomControls
                         this._solidBrush = new SolidColorBrush(color);
                         this._gradientBrush.Freeze();
                         this._solidBrush.Freeze();
-                        // Das nachfolgende Cashing ist notwendig. Ansonsten folgen nach längerem Betrieb
+                        // Das nachfolgende Caching ist notwendig. Ansonsten folgen nach längerem Betrieb
                         // Speicherfehler: "Zur Verarbeitung dieses Befehls sind nicht genügend Speicherressourcen verfügbar..."
                         this._colorsBrushes.Add(color, new Brush[] { this._solidBrush, this._gradientBrush} );
                     }
