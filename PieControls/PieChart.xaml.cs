@@ -41,6 +41,8 @@ namespace NetEti.CustomControls
                 {
                     v.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged);
                 }
+                value.RadialLine.PropertyChanged
+                    += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged); ;
                 Dispatcher.Invoke(new Action(() => { InvalidateVisual(); }));
             }
         }

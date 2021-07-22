@@ -42,6 +42,7 @@ namespace NetEti.DemoApplications
 
             collection2 = new PieDataCollection();
             collection2.CollectionName = "Foods";
+            collection2.RadialLine = new PieRadialLine() { Color = Colors.Transparent, Value = 35, Width = 2 };
             collection2.Add(new PieSegment { Color = Colors.Green, Value = 20, Name = "Dairy" });
             collection2.Add(new PieSegment { Color = Colors.Yellow, Value = 10, Name = "Fruites" });
             collection2.Add(new PieSegment { Color = Colors.Red, Value = 10, Name = "Vegetables" });
@@ -51,6 +52,7 @@ namespace NetEti.DemoApplications
 
             collection3 = new PieDataCollection();
             collection3.CollectionName = "Fruites";
+            collection3.RadialLine = new PieRadialLine() { Color = Colors.Transparent, Value = 35, Width = 2 };
             collection3.Add(new PieSegment { Color = Colors.Green, Value = 200, Name = "Apples" });
             collection3.Add(new PieSegment { Color = Colors.Yellow, Value = 150, Name = "Oranges" });
             collection3.Add(new PieSegment { Color = Colors.Red, Value = 250, Name = "Grapes" });
@@ -59,6 +61,7 @@ namespace NetEti.DemoApplications
 
             collection4 = new PieDataCollection();
             collection4.CollectionName = "Furniture";
+            collection4.RadialLine = new PieRadialLine() { Color = Colors.Transparent, Value = 35, Width = 2 };
             collection4.Add(new PieSegment { Color = Colors.Green, Value = 8.5, Name = "Tables" });
             collection4.Add(new PieSegment { Color = Colors.Yellow, Value = 7.5, Name = "Chairs" });
             collection4.Add(new PieSegment { Color = Colors.Red, Value = 9.2, Name = "Beds" });
