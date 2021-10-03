@@ -115,7 +115,10 @@ namespace NetEti.CustomControls
         public FormattedText GetFormattedText(string textToFormat, double fontSize, Brush brush)
         {
             Typeface typeface = new Typeface(new FontFamily("Arial"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
-            return new FormattedText(textToFormat, CultureInfo.GetCultureInfo("en-us"), FlowDirection.LeftToRight, typeface, fontSize, brush);
+            // return new FormattedText(textToFormat, CultureInfo.GetCultureInfo("en-us"), FlowDirection.LeftToRight,
+            // typeface, fontSize, brush);
+            return new FormattedText(textToFormat, CultureInfo.GetCultureInfo("en-us"), FlowDirection.LeftToRight,
+                typeface, fontSize, brush, VisualTreeHelper.GetDpi(this).PixelsPerDip);
         }
     }
 }

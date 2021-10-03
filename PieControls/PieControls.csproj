@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Drawing">
-      <HintPath>$(AssemblyRoot)\Microsoft.Expression.Drawing.dll</HintPath>
+      <HintPath>..\Assemblies\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="NetEti.InfoController">
       <HintPath>..\..\..\ReadyBin\Assemblies\NetEti.InfoController.dll</HintPath>
@@ -71,7 +71,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFToolkit.Extended">
-      <HintPath>$(AssemblyRoot)\WPFToolkit.Extended.dll</HintPath>
+      <HintPath>..\Assemblies\WPFToolkit.Extended.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
