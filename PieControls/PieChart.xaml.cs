@@ -16,7 +16,7 @@ namespace NetEti.CustomControls
         /// <summary>
         /// Daten für das aktuelle Tortendiagramm.
         /// </summary>
-        public PieDataCollection values;
+        public PieDataCollection? values;
 
         /// <summary>
         /// Farbe für Popups mit Zusatzinformationen.
@@ -30,24 +30,30 @@ namespace NetEti.CustomControls
         /// <summary>
         /// Holt oder setzt die Daten für das aktuelle Tortendiagramm.
         /// </summary>
-        public PieDataCollection Data
+        public PieDataCollection? Data
         {
             get { return values; }
             set
             {
                 values = value;
                 Pie.Data = value;
-                foreach (var v in values)
+                if (values != null)
                 {
-                    v.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged);
+                    foreach (var v in values)
+                    {
+                        v.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged);
+                    }
+                    if (values.RadialLine != null)
+                    {
+                        values.RadialLine.PropertyChanged
+                            += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged);
+                    }
                 }
-                value.RadialLine.PropertyChanged
-                    += new System.ComponentModel.PropertyChangedEventHandler(PieSegment_PropertyChanged); ;
                 Dispatcher.Invoke(new Action(() => { InvalidateVisual(); }));
             }
         }
 
-        private void PieSegment_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void PieSegment_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             Dispatcher.Invoke(new Action(() => { InvalidateVisual(); }));
         }

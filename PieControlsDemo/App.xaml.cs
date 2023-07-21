@@ -2,14 +2,14 @@
 using System;
 using System.Windows;
 
-namespace NetEti.DemoApplications
+namespace PieControlsDemo
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        private static Logger _logger;
+        private static Logger? _logger;
 
         /// <summary>
         /// Wird beim Start der Anwendung durchlaufen.
@@ -25,7 +25,7 @@ namespace NetEti.DemoApplications
         // Wird in jedem Fall beim Beenden von Vishnu durchlaufen.
         // Versucht noch, Aufräumarbeiten auszuführen, endet aber u.U. aprupt
         // ohne fertig zu werden.
-        private static void OnProcessExit(object sender, EventArgs e)
+        private static void OnProcessExit(object? sender, EventArgs e)
         {
             App._logger?.Dispose();
         }

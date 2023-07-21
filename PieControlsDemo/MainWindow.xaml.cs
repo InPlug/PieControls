@@ -1,13 +1,12 @@
-﻿using System;
+﻿using NetEti.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using NetEti.CustomControls;
 
-
-namespace NetEti.DemoApplications
+namespace PieControlsDemo
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,10 +24,10 @@ namespace NetEti.DemoApplications
         }
 
         List<PieDataCollection> collectionList = new List<PieDataCollection>();
-        PieDataCollection collection1;
-        PieDataCollection collection2;
-        PieDataCollection collection3;
-        PieDataCollection collection4;
+        PieDataCollection? collection1;
+        PieDataCollection? collection2;
+        PieDataCollection? collection3;
+        PieDataCollection? collection4;
 
         void PopulateCharts()
         {

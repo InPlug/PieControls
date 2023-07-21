@@ -12,12 +12,12 @@ namespace NetEti.CustomControls
         /// <summary>
         /// Name der Collection.
         /// </summary>
-        public string CollectionName { get; set; }
+        public string? CollectionName { get; set; }
 
         /// <summary>
         /// Holt oder setzt Informationen zum Zeichnen eines
         /// Radius (z.B. Anzeige für Maximal- Minimalwert).
         /// </summary>
-        public PieRadialLine RadialLine { get; set; }
+        public PieRadialLine? RadialLine { get; set; }
     }
 }

@@ -14,12 +14,12 @@ namespace NetEti.CustomControls
         /// <summary>
         /// WPF-Event für die UI.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string name;
+        private string? name;
         private double value;
-        private Brush _gradientBrush;
-        private Brush _solidBrush;
+        private Brush _gradientBrush = Brushes.Black;
+        private Brush _solidBrush = Brushes.Black;
         private Color color;
         private Dictionary<Color, Brush[]> _colorsBrushes;
 
@@ -123,7 +123,7 @@ namespace NetEti.CustomControls
         /// <summary>
         /// Holt oder setzt den Namen für dieses Segment.
         /// </summary>
-        public string Name 
+        public string? Name 
         { 
             get 
             { 

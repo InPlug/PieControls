@@ -18,7 +18,7 @@ namespace NetEti.CustomControls
         /// <summary>
         /// WPF-Event für die UI.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Holt oder setzt den Wert für den Radius - bestimmt die Ausrichtung im PieChart.
@@ -83,7 +83,7 @@ namespace NetEti.CustomControls
 
         private double value;
         private double width;
-        private Brush solidBrush;
+        private Brush solidBrush = Brushes.Black;
         private Color color;
 
         private void onPropertyChanged(object sender, string propertyName)

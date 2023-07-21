@@ -1,5 +1,4 @@
-﻿using NetEti.ApplicationControl;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,7 +54,7 @@ namespace NetEti.CustomControls
     /// </summary> 
     public partial class PieControl : UserControl
     {
-        PieDataCollection values;
+        PieDataCollection? values;
         Dictionary<Path, PieSegment> pathDictionary = new Dictionary<Path, PieSegment>();
 
         /// <summary>
@@ -107,16 +106,19 @@ namespace NetEti.CustomControls
         /// <summary>
         /// Daten für das aktuelle PieChart.
         /// </summary>
-        public PieDataCollection Data
+        public PieDataCollection? Data
         {
             get { return values; }
             set
             {
                 values = value;
-                values.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(values_CollectionChanged);
-                foreach (var v in values)
+                if (values != null)
                 {
-                    v.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(pieSegment_PropertyChanged);
+                    values.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(values_CollectionChanged);
+                    foreach (var v in values)
+                    {
+                        v.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(pieSegment_PropertyChanged);
+                    }
                 }
                 ResetPie();
             }
@@ -143,8 +145,8 @@ namespace NetEti.CustomControls
         private void Path_MouseEnter(object sender, MouseEventArgs e)
         {
             piePopup.Visibility = System.Windows.Visibility.Visible;
-            PieSegment seg = pathDictionary[sender as Path];
-            popupData.Text = seg.Name + " : " + ((seg.Value / Data.GetTotal()) * 100).ToString("N2") + "%";
+            PieSegment seg = pathDictionary[(Path)sender];
+            popupData.Text = seg.Name + " : " + ((seg.Value / Data?.GetTotal() ?? 1) * 100).ToString("N2") + "%";
             Point point = Mouse.GetPosition(this);
             piePopup.Margin = new Thickness(point.X - piePopup.ActualWidth / 4, point.Y - (18 + piePopup.ActualHeight), 0, 0);
         }
@@ -246,7 +248,7 @@ namespace NetEti.CustomControls
                         line.Stroke = Data.RadialLine.SolidBrush;
                         line.Visibility = System.Windows.Visibility.Visible;
                         drawingCanvas.Children.Add(line);
-                        InfoController.Say(String.Format($"#PieControl# Children: {drawingCanvas.Children.Count}"));
+                        // InfoController.Say(String.Format($"#PieControl# Children: {drawingCanvas.Children.Count}"));
                     }
                 }
             }
@@ -257,12 +259,12 @@ namespace NetEti.CustomControls
             Dispatcher.Invoke(new Action(CreatePiePathAndGeometries));
         }
 
-        private void pieSegment_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void pieSegment_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             ResetPie();
         }
 
-        private void values_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void values_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             ResetPie();
         }

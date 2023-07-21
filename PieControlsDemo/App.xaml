@@ -1,6 +1,7 @@
-﻿<Application x:Class="NetEti.DemoApplications.App"
+﻿<Application x:Class="PieControlsDemo.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PieControlsDemo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
