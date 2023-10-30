@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <PackageId>$(AssemblyName)</PackageId>
@@ -10,8 +10,8 @@
     <Description>$(AssemblyName) - Demoprogramm</Description>
     <Authors>Kashif Imran, Erik Nagel</Authors>
     <Company>NetEti</Company>
-    <AssemblyVersion>7.0.1.1</AssemblyVersion>
-    <FileVersion>7.0.1.1</FileVersion>
+    <AssemblyVersion>8.0.0.0</AssemblyVersion>
+    <FileVersion>8.0.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup>

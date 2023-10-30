@@ -216,14 +216,14 @@ namespace NetEti.CustomControls
                             geometry = new PathGeometry();
                             double x = Math.Cos(angle) * Width / 2 + Width / 2;
                             double y = Math.Sin(angle) * Height / 2 + Height / 2;
-                            LineSegment lingeSeg = new LineSegment(new Point(x, y), true);
+                            LineSegment lineSeg = new LineSegment(new Point(x, y), true);
                             double angleShare = (ps.Value / total) * 360;
                             angle += DegreeToRadian(angleShare);
                             x = Math.Cos(angle) * Width / 2 + Width / 2;
                             y = Math.Sin(angle) * Height / 2 + Height / 2;
                             ArcSegment arcSeg = new ArcSegment(new Point(x, y), new Size(Width / 2, Height / 2), angleShare, angleShare > 180, SweepDirection.Clockwise, false);
-                            LineSegment lingeSeg2 = new LineSegment(new Point(Width / 2, Height / 2), true);
-                            PathFigure fig = new PathFigure(new Point(Width / 2, Height / 2), new PathSegment[] { lingeSeg, arcSeg, lingeSeg2 }, false);
+                            LineSegment lineSeg2 = new LineSegment(new Point(Width / 2, Height / 2), true);
+                            PathFigure fig = new PathFigure(new Point(Width / 2, Height / 2), new PathSegment[] { lineSeg, arcSeg, lineSeg2 }, false);
                             ((PathGeometry)geometry).Figures.Add(fig);
                         }
                         path.Fill = ps.GradientBrush;
